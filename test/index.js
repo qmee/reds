@@ -54,6 +54,18 @@ reds
   .metaphoneKeys('foobar', ['foo', 'bar', 'baz'])
   .should.eql(['foobar:word:F', 'foobar:word:BR', 'foobar:word:BS']);
 
+reds.metaphone = reds.metaphoneOff;
+reds
+	.metaphoneArray(['foo','bar','baz'])
+	.should.eql(['foo','bar','baz'])
+
+reds.metaphone = reds.metaphoneOn;
+
+reds
+  .metaphoneArray(['foo', 'bar', 'baz'])
+  .should.eql(['F', 'BR', 'BS'])
+
+
 db.flushdb(function(){
   search
     .index('Tobi wants 4 dollars', 0)
